@@ -1,5 +1,7 @@
 const mix = require('laravel-mix');
 
+mix.browserSync('multi-auth.org');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management

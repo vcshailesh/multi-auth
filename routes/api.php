@@ -13,21 +13,19 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
-//Route::group([
-//    'prefix'     => 'admin',
-//    'namespace'  => 'Api'
-//], function () {
-//    Route::group(['namespace' => 'Admin'], function () {
-             /*
-             *    Login Route
-             */
-        Route::post('admin/login', 'Api\Admin\AuthController@login');
-        Route::post('admin/register', 'Api\Admin\AuthController@register');
-        Route::post('admin/user', 'Api\Admin\AuthController@userInformation');
-
-//    });
-//});
+Route::group([
+    'namespace' => 'Api'
+], function () {
+    Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+        /*
+        *    Login Route
+        */
+        Route::get('logout', 'AuthController@logout');
+        Route::post('login', 'AuthController@login');
+        Route::post('register', 'AuthController@register');
+    });
+});

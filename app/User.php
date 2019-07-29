@@ -11,8 +11,6 @@ class User extends Authenticatable
 {
     use Notifiable,HasApiTokens;
 
-    protected $guard = 'web';
-
     protected $table = 'users';
 
     /**
